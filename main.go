@@ -1,34 +1,35 @@
 package main
 
 import (
-	"html/template"
 	"net/http"
 
-	"github.com/gorilla/mux"
+	"github.com/gin-gonic/gin"
 )
 
-var templates = template.Must(template.ParseGlob("templates/*.html"))
-
 func main() {
-	router := mux.NewRouter()
+	r := gin.Default()
 
-	// Serve static files from the "static" directory
-	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	// Serve static files
+	r.Static("/static", "./static")
 
-	// Home route
-	router.HandleFunc("/", HomeHandler).Methods("GET")
+	// Load HTML templates
+	r.LoadHTMLGlob("templates/*")
 
-	// Overview route
-	router.HandleFunc("/overview", OverviewHandler).Methods("GET")
+	// Define routes
+	setupRoutes(r)
 
-	// Toggle content route
-	router.HandleFunc("/toggle-content", ToggleContentHandler).Methods("GET")
-
-	http.Handle("/", router)
-	http.ListenAndServe(":8080", nil)
+	// Start the server
+	r.Run()
 }
 
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
+func setupRoutes(r *gin.Engine) {
+	// Root route
+	r.GET("/", homeHandler)
+	r.GET("/overview", OverviewHandler)
+	r.GET("/toggle-content", ToggleContentHandler)
+}
+
+func homeHandler(c *gin.Context) {
 	name := struct {
 		Title       string
 		Description string
@@ -38,10 +39,11 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Render the HTML template
-	templates.ExecuteTemplate(w, "index.html", name)
+	c.HTML(http.StatusOK, "index.html", name)
+
 }
 
-func OverviewHandler(w http.ResponseWriter, r *http.Request) {
+func OverviewHandler(c *gin.Context) {
 	name := struct {
 		Title string
 	}{
@@ -49,10 +51,10 @@ func OverviewHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Render the HTML template for the project overview
-	templates.ExecuteTemplate(w, "overview.html", name)
+	c.HTML(http.StatusOK, "overview.html", name)
 }
 
-func ToggleContentHandler(w http.ResponseWriter, r *http.Request) {
+func ToggleContentHandler(c *gin.Context) {
 	// You can add logic here to determine the content to be toggled
 	name := struct {
 		Title string
@@ -61,5 +63,5 @@ func ToggleContentHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Render the HTML template for the toggled content
-	templates.ExecuteTemplate(w, "toggle-content.html", name)
+	c.HTML(http.StatusOK, "toggle-content.html", name)
 }
