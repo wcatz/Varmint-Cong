@@ -1,3 +1,4 @@
+![Bill Murray](https://raw.githubusercontent.com/wcatz/Varmint-Cong/master/static/media/bill-gopher.webp)
 # # Varmint-Cong
 Go front end development with Gorilla, Htmx, tailwinds and Air.
 
