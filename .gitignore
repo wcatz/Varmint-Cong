@@ -8,6 +8,41 @@
 *.so
 *.dylib
 
+# Ignore go generate files
+_generate/
+
+# Ignore Go binary and object files
+*.o
+*.a
+
+# Ignore the build output directory
+/tmp/
+/build/
+
+# Ignore Tailwind CSS build output
+/static/css/output.min.css
+
+# Ignore logs
+/log/
+
+# Ignore macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Ignore project-specific generated files
+/assets/gen/
+
+# Ignore any files/directories created by your text editor or IDE
+.vscode/
+.idea/
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
 # Test binary, built with `go test -c`
 *.test
 

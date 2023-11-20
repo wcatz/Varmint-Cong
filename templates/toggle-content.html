@@ -1,0 +1,22 @@
+    <div class="mx-auto my-8 text-center">
+      <!-- Image or Overview Content Container -->
+      <div id="main-container">
+        <img
+          src="static/media/bill-gopher.webp"
+          alt="Bill Murray with Gopher"
+          class="mx-auto mb-4 rounded-lg shadow-md"
+        />
+        <!-- Button to Show Overview -->
+        <button
+          id="show-overview"
+          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+          hx-get="/overview"
+          hx-trigger="click"
+          hx-swap="outerHTML"
+          hx-target="#main-container"
+          hx-transition="fade"
+        >
+          Show Overview
+        </button>
+      </div>
+    </div>

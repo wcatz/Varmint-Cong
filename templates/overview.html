@@ -1,0 +1,25 @@
+<!-- overview.html -->
+<div id="overview-container" class="mt-8 p-8 bg-gray-800 rounded-lg shadow-md" hx-target="#overview-container" hx-transition="fade">
+    <h2 class="text-3xl font-bold mb-4 text-white">Project Overview</h2>
+    <div style="height: 1em;"></div> <!-- Placeholder -->
+    <p class="text-gray-300">
+        This starter kit utilizes the following tools:
+        <br>
+        <a href="https://github.com/gorilla/mux" target="_blank" class="text-blue-500 hover:underline">Gorilla Mux</a>,
+        <a href="https://htmx.org/" target="_blank" class="text-blue-500 hover:underline">htmx</a>,
+        <a href="https://tailwindcss.com/" target="_blank" class="text-blue-500 hover:underline">Tailwind CSS</a>, and
+        <a href="https://github.com/cosmtrek/air" target="_blank" class="text-blue-500 hover:underline">Air for Reloading</a>.
+    </p>
+          <!-- Button to Show Overview -->
+          <button
+          id="show-overview"
+          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+          hx-get="/toggle-content"
+          hx-trigger="click"
+          hx-swap="innerHTML"
+          hx-target="#overview-container"
+          hx-transition="fade"
+        >
+          Show Overview
+        </button>
+</div>
