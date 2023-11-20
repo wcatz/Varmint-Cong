@@ -14,6 +14,9 @@ install [Air](https://github.com/cosmtrek/air)
 
 go install github.com/cosmtrek/air@latest
 
+add to .zshrc or .bashrc and source
+export PATH=$PATH:$(go env GOPATH)/bin
+
 Clone this repo and cd into it
 
 Run the code with air and watch and build css with tailwinds cli
