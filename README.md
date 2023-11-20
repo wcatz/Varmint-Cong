@@ -9,6 +9,10 @@ Add it to $PATH
 
 sudo mv tailwindscss /usr/local/bin/
 
+install [Air](https://github.com/cosmtrek/air)
+
+go install github.com/cosmtrek/air@latest
+
 Clone this repo and cd into it
 
 Run the code with air and watch and build css with tailwinds cli
